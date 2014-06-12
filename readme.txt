@@ -38,7 +38,7 @@ Install by FTP
 
 
 == Frequently Asked Questions ==
-Do you have questions or issues with SIS Facebook Like Box? [Ask for support here](http://sayful1.wordpress.com)
+Do you have questions or issues with SIS Facebook Like Box? [Ask for support here](http://wordpress.org/support/plugin/sis-facebook-like-box)
 
 == Screenshots ==
 
