@@ -1,6 +1,6 @@
 === SIS Facebook Like Box ===
 Contributors: sayful
-Tags: Facebook, facebook button, facebook like, facebook like button, Like, like button, Share, sharing, social, social plugin, social sharing
+Tags: widget, Facebook, facebook button, facebook like, facebook like button, Like, like button, Share, sharing, social, social plugin, social sharing
 Requires at least: 2.9
 Tested up to: 3.9
 Stable tag: 1.0
