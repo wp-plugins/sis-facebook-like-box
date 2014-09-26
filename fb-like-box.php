@@ -3,7 +3,7 @@
  * Plugin Name: SIS Facebook Like Box
  * Plugin URI: http://wordpress.org/plugins/sis-facebook-like-box/
  * Description: A widget that displays your facebook like button.
- * Version: 1.0
+ * Version: 1.1
  * Author: Sayful Islam
  * Author URI: http://www.sayful.net
  * License: GPL2
@@ -47,8 +47,9 @@ class SIS_FB_Like_Widget extends WP_Widget {
 	    add_action('wp_footer', array(&$this,'add_js'));
 	 
 	    /* Display the widget title if one was input (before and after defined by themes). */
+	    ?><aside class="single_sidebar"><?php
 	    if ( $this->widget_title )
-	        echo $this->widget_title;
+	        echo '<h1 class="widget-title">'.$this->widget_title.'</h1>';
 	 
 	    /* Like Box */
 	    ?>
@@ -59,6 +60,7 @@ class SIS_FB_Like_Widget extends WP_Widget {
 	            data-stream="<?php echo $this->facebook_stream; ?>"
 	            data-header="<?php echo $this->facebook_header; ?>">
 	        </div>
+	        </aside>
 	    <?php
 	}
 	/**

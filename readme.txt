@@ -1,9 +1,9 @@
 === SIS Facebook Like Box ===
 Contributors: sayful
 Tags: widget, Facebook, facebook button, facebook like, facebook like button, Like, like button, Share, sharing, social, social plugin, social sharing
-Requires at least: 2.9
-Tested up to: 3.9
-Stable tag: 1.0
+Requires at least: 3.0
+Tested up to: 4.0
+Stable tag: 1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
