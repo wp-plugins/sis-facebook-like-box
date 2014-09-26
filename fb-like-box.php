@@ -17,8 +17,8 @@ class SIS_FB_Like_Widget extends WP_Widget {
      */
     public function __construct() {
         parent::__construct(
-            'facebook_like_widget', // Base ID
-            'Facebook Like Box', // Name
+            'facebook_like_widget',
+            __('Facebook Like Box', 'sisfblike' ),
             array( 'description' => __( 'A widget that displays your facebook like button.', 'sisfblike' ), )
         );
     }// end constructor
@@ -47,7 +47,7 @@ class SIS_FB_Like_Widget extends WP_Widget {
 	    add_action('wp_footer', array(&$this,'add_js'));
 	 
 	    /* Display the widget title if one was input (before and after defined by themes). */
-	    ?><aside class="single_sidebar"><?php
+	    ?><aside class="single_sidebar widget"><?php
 	    if ( $this->widget_title )
 	        echo '<h1 class="widget-title">'.$this->widget_title.'</h1>';
 	 
@@ -135,7 +135,8 @@ class SIS_FB_Like_Widget extends WP_Widget {
 	    <p>
 		    <label for="<?php echo $this->get_field_id( 'app_id' ); ?>"><?php _e('App Id', 'sisfblike') ?></label>
 		    <input type="text" class="widefat" id="<?php echo $this->get_field_id( 'app_id' ); ?>" name="<?php echo $this->get_field_name( 'app_id' ); ?>" value="<?php echo $instance['app_id']; ?>" />
-		    <small>Dont't know your App ID? Head on over to <a target="_blank" href="https://developers.facebook.com/">FB Developer</a> and create App ID. Still need help? visit <a target="_blank" href="http://sayful1.wordpress.com/2014/06/12/how-to-get-facebook-api-key/">here</a>.</small>
+
+		    <small><?php _e('Dont\'t know your App ID? Head on over to <a target="_blank" href="https://developers.facebook.com/">FB Developer</a> and create App ID. Still need help? visit <a target="_blank" href="http://sayful1.wordpress.com/2014/06/12/how-to-get-facebook-api-key/">here</a>.', 'sisfblike') ?></small>
 	    </p>
 	 
 	    <!-- Page name: Text Input -->
@@ -148,6 +149,7 @@ class SIS_FB_Like_Widget extends WP_Widget {
 	    <p>
 	    	<label for="<?php echo $this->get_field_id( 'width' ); ?>"><?php _e('Width', 'sisfblike') ?></label>
 	    	<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'width' ); ?>" name="<?php echo $this->get_field_name( 'width' ); ?>" value="<?php echo $instance['width']; ?>" />
+	    	<small><?php _e('Best view at 235 or 288', 'sisfblike') ?></small>
 	    </p>
 	 
 	    <!-- Show Faces: Checkbox -->
