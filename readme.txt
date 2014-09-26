@@ -12,6 +12,8 @@ A widget that displays your facebook like button.
 == Description ==
 
 A widget that displays your facebook like button.
+To display facebook like button, you need Facebook API key.
+To get a Facebook API key, you can follow [this tutorial](http://sayful1.wordpress.com/2014/06/12/how-to-get-facebook-api-key/)
 
 == Installation ==
 
