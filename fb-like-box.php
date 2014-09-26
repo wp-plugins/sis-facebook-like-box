@@ -159,7 +159,9 @@ class SIS_FB_Like_Widget extends WP_Widget {
 	    </p>
 	 
 	    <!-- Show Stream: Checkbox -->
-	    <p><label for="<?php echo $this->get_field_id( 'show_stream' ); ?>"><?php _e('Show Stream', 'sisfblike') ?></label><input type="checkbox" class="widefat" id="<?php echo $this->get_field_id( 'show_stream' ); ?>" name="<?php echo $this->get_field_name( 'show_stream' ); ?>" value="1" <?php echo ($instance['show_stream'] == "true" ? "checked='checked'" : ""); ?> /></p>
+	    <p>
+	    	<label for="<?php echo $this->get_field_id( 'show_stream' ); ?>"><?php _e('Show Stream', 'sisfblike') ?></label><input type="checkbox" class="widefat" id="<?php echo $this->get_field_id( 'show_stream' ); ?>" name="<?php echo $this->get_field_name( 'show_stream' ); ?>" value="1" <?php echo ($instance['show_stream'] == "true" ? "checked='checked'" : ""); ?> />
+	    </p>
 	 
 	    <!-- Show Header: Checkbox -->
 	    <p>
