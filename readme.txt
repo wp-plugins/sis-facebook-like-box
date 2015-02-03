@@ -1,19 +1,61 @@
-=== SIS Facebook Like Box ===
+=== Facebook Like Box ===
 Contributors: sayful
-Tags: widget, Facebook, facebook button, facebook like, facebook like button, Like, like button, Share, sharing, social, social plugin, social sharing
+Tags: widget, facebook, facebook like box, facebook like, facebook like button, like button
 Requires at least: 3.0
 Tested up to: 4.1
-Stable tag: 1.1
+Stable tag: 2.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-A widget that displays your facebook like button.
+A widget that displays your Facebook Like Box for Facebook Page.
 
 == Description ==
 
-A widget that displays your facebook like button.
-To display facebook like button, you need Facebook API key.
-To get a Facebook API key, you can follow [this tutorial](http://sayful1.wordpress.com/2014/06/12/how-to-get-facebook-api-key/)
+A WordPress widget that displays The Like Box that is a special version of the Like Button designed only for Facebook Pages.
+
+= Usages =
+
+1. At first, Install and activate the plugin.
+2. Go to `Dashboard >> Appearance >> Widgets` and you will find a widget `Facebook Like Box` click on it and select at which Widget Area you want to show it.
+3. Fill Widget detail and click `Save`.
+
+= Settings =
+
+App Id:
+
+To display facebook like button, you need Facebook API key. To get this create an account at [Facebook Developers](https://developers.facebook.com/). To create an Developers account, you can read [this article from my blog](http://sayful1.wordpress.com/2014/06/12/how-to-get-facebook-api-key/)
+
+Facebook Page URL:
+
+The absolute URL of the Facebook Page that will be liked. This is a required setting. e.g. https://www.facebook.com/FacebookDevelopers
+
+Width:
+
+The width of the plugin in pixels. Minimum is 292. Default is 300.
+
+Height:
+
+The height of the plugin in pixels. The default height varies based on number of (Friends' Faces) to display, and whether the (Posts) is displayed. With (Show Posts) set to true and 10 photos displayed (via Show Friends' Faces) the default height is 556px. With (Posts) and (Show Friends' Faces) both false, the default height is 63px. The (Posts) is always 300px so if you have it enabled, you need to make sure there is enough height for any other elements.
+
+Color Scheme:
+
+The color scheme used by the plugin. Can be "light" or "dark".Default is "light".
+
+Show Friends' Faces:
+
+Specifies whether to display profile photos of people who like the page.
+
+Show Posts:
+
+Specifies whether to display a stream of the latest posts by the Page.
+
+Show Header:
+
+Specifies whether to display the Facebook header at the top of the plugin.
+
+Show Border:
+
+Specifies whether or not to show a border around the plugin.
 
 == Installation ==
 
@@ -49,6 +91,13 @@ Do you have questions or issues with SIS Facebook Like Box? [Ask for support her
 
 == Changelog ==
 
+= version 2.0.0 =
+* Added option to change theme "Light" to "Dark"
+* Added option to control height of the widget
+* Added option to show or hide border
+* Improved options to work better with your theme
+* (NB: This version will not work with version 1.0, 1.1, 1.2)
+
 = version 1.0 =
 * Implementation of basic functionality.
 
@@ -59,3 +108,6 @@ Do you have questions or issues with SIS Facebook Like Box? [Ask for support her
 == CONTACT ==
 
 [Sayful Islam](http://www.sayful.net)
+
+== Upgrade Notice ==
+You can upgrade this plugin for more options. But this version (2.0.0) will not work with your previour settings. After upgrading, you need to change some settings.
