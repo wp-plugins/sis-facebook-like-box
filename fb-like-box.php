@@ -19,7 +19,7 @@ class SIS_FB_Like_Widget extends WP_Widget {
         parent::__construct(
             'facebook_like_widget',
             __('Facebook Like Box', 'sisfblike' ),
-            array( 'description' => __( 'A WordPress widget that displays The Like Box that is a special version of the Like Button designed only for Facebook Pages.', 'sisfblike' ), )
+            array( 'description' => __( 'Facebook Like Box only for Facebook Pages.', 'sisfblike' ), )
         );
     }// end constructor
  
