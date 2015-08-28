@@ -3,9 +3,9 @@
  * Plugin Name: Facebook Like Box
  * Plugin URI: http://wordpress.org/plugins/sis-facebook-like-box/
  * Description: A widget that displays your Facebook Like Box for Facebook Page.
- * Version: 2.0.0
+ * Version: 2.1.0
  * Author: Sayful Islam
- * Author URI: http://www.sayful.net
+ * Author URI: http://www.sayfulit.com
  * License: GPL2
 */
 
@@ -38,13 +38,10 @@ class SIS_FB_Like_Widget extends WP_Widget {
 	    $href 			= $instance['href'];
 	    $width 			= $instance['width'];
 	    $height 		= $instance['height'];
-	    $colorscheme 	= $instance['colorscheme'];
-	    $showfaces 		= ($instance['showfaces'] == "1" ? "true" : "false");
-	    $header 		= ($instance['header'] == "1" ? "true" : "false");
-	    $stream 		= ($instance['stream'] == "1" ? "true" : "false");
-	    $showborder 	= ($instance['showborder'] == "1" ? "true" : "false");
-	 
-	    add_action('wp_footer', array(&$this,'fb_like_box_js'));
+	    $show_facepile 	= ($instance['showfaces'] == "1" ? "true" : "false");
+	    $show_posts 	= ($instance['stream'] == "1" ? "true" : "false");
+	    $small_header 	= ($instance['small_header'] == "1" ? "true" : "false");
+	    $hide_cover 	= ($instance['hide_cover'] == "1" ? "true" : "false");
 	 
 	    /* Display the widget title if one was input (before and after defined by themes). */
 	    echo $args['before_widget'];
@@ -55,34 +52,27 @@ class SIS_FB_Like_Widget extends WP_Widget {
 	 
 	    /* Like Box */
 	    ?>
-	        <div class="fb-like-box"
-				data-href="<?php echo $href; ?>"
-				data-width="<?php echo $width; ?>"
-				data-height="<?php echo $height; ?>"
-				data-colorscheme="<?php echo $colorscheme; ?>"
-				data-show-faces="<?php echo $showfaces; ?>"
-				data-header="<?php echo $header; ?>"
-				data-stream="<?php echo $stream; ?>"
-				data-show-border="<?php echo $showborder; ?>">
+			<div class="fb-page"
+				data-href="<?php echo $href; ?>" 
+				data-width="<?php echo $width; ?>" 
+				data-height="<?php echo $height; ?>" 
+				data-small-header="<?php echo $small_header; ?>" 
+				data-adapt-container-width="true" 
+				data-hide-cover="<?php echo $hide_cover; ?>"
+				data-show-facepile="<?php echo $show_facepile; ?>" 
+				data-show-posts="<?php echo $show_posts; ?>">
 			</div>
-	        </aside>
-	    <?php
-
-	    echo $args['after_widget'];
-	}
-	/**
-	 * Add Facebook javascripts
-	 */
-	public function fb_like_box_js() {
-		
-		echo '<div id="fb-root"></div>
+			<div id="fb-root"></div>
 			<script>(function(d, s, id) {
 			  var js, fjs = d.getElementsByTagName(s)[0];
 			  if (d.getElementById(id)) return;
 			  js = d.createElement(s); js.id = id;
-			  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId='.$app_id.'&version=v2.0";
+			  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4&appId=<?php echo $app_id; ?>";
 			  fjs.parentNode.insertBefore(js, fjs);
-			}(document, \'script\', \'facebook-jssdk\'));</script>';
+			}(document, 'script', 'facebook-jssdk'));</script>
+	    <?php
+
+	    echo $args['after_widget'];
 	}
  
     /**
@@ -104,12 +94,12 @@ class SIS_FB_Like_Widget extends WP_Widget {
 	    $instance['href'] 		= strip_tags( $new_instance['href'] );
 	    $instance['width'] 		= strip_tags( $new_instance['width'] );
 	    $instance['height'] 	= strip_tags( $new_instance['height'] );
-	    $instance['colorscheme'] = strip_tags( $new_instance['colorscheme'] );
 	 
 	    $instance['showfaces'] 	= (bool)$new_instance['showfaces'];
 	    $instance['stream'] 	= (bool)$new_instance['stream'];
-	    $instance['header'] 	= (bool)$new_instance['header'];
-	    $instance['showborder'] = (bool)$new_instance['showborder'];
+	    
+	    $instance['small_header'] 	= (bool)$new_instance['small_header'];
+	    $instance['hide_cover'] = (bool)$new_instance['hide_cover'];
 	 
 	    return $instance;
 	}
@@ -127,13 +117,12 @@ class SIS_FB_Like_Widget extends WP_Widget {
 		$title 		= ! empty( $instance['title'] ) ? $instance['title'] : __( 'Find us on Facebook', 'sisfblike' );
      	$app_id 	= ! empty( $instance['app_id'] ) ? $instance['app_id'] : '';
      	$href 		= ! empty( $instance['href'] ) ? $instance['href'] : '';
-     	$width 		= ! empty( $instance['width'] ) ? $instance['width'] : '300';
+     	$width 		= ! empty( $instance['width'] ) ? $instance['width'] : '';
      	$height 	= ! empty( $instance['height'] ) ? $instance['height'] : '';
-     	$colorscheme = ! empty( $instance['colorscheme'] ) ? $instance['colorscheme'] : 'light';
      	$showfaces 	= ! empty( $instance['showfaces'] ) ? $instance['showfaces'] : '1';
      	$stream 	= ! empty( $instance['stream'] ) ? $instance['stream'] : '';
-     	$header 	= ! empty( $instance['header'] ) ? $instance['header'] : '1';
-     	$showborder = ! empty( $instance['showborder'] ) ? $instance['showborder'] : '1';
+     	$small_header	= ! empty( $instance['small_header'] ) ? $instance['small_header'] : '';
+     	$hide_cover = ! empty( $instance['hide_cover'] ) ? $instance['hide_cover'] : '';
 	    ?>
 	 
 	    <p>
@@ -153,20 +142,13 @@ class SIS_FB_Like_Widget extends WP_Widget {
 	    </p>
 	    <p>
 	    	<label for="<?php echo $this->get_field_id( 'width' ); ?>"><?php _e('Width', 'sisfblike') ?></label>
-	    	<input type="number" class="widefat" id="<?php echo $this->get_field_id( 'width' ); ?>" name="<?php echo $this->get_field_name( 'width' ); ?>" value="<?php if(isset($width)){echo esc_attr( $width );} ?>" min="292">
-	    	<small><?php _e('The width of the plugin in pixels. Minimum is 292. Default is 300.', 'sisfblike') ?></small>
+	    	<input type="number" class="widefat" id="<?php echo $this->get_field_id( 'width' ); ?>" name="<?php echo $this->get_field_name( 'width' ); ?>" value="<?php if(isset($width)){echo esc_attr( $width );} ?>" min="150" max="500">
+	    	<small><?php _e('The width of the plugin in pixels. Minimum is 150. Maximum is 500.', 'sisfblike') ?></small>
 	    </p>
 	    <p>
 	    	<label for="<?php echo $this->get_field_id( 'height' ); ?>"><?php _e('Height', 'sisfblike') ?></label>
-	    	<input type="number" class="widefat" id="<?php echo $this->get_field_id( 'height' ); ?>" name="<?php echo $this->get_field_name( 'height' ); ?>" value="<?php if(isset($height)){echo esc_attr( $height );} ?>" min="63">
+	    	<input type="number" class="widefat" id="<?php echo $this->get_field_id( 'height' ); ?>" name="<?php echo $this->get_field_name( 'height' ); ?>" value="<?php if(isset($height)){echo esc_attr( $height );} ?>" min="70">
 	    	<small><?php _e('The height of the plugin in pixels. The default height varies based on number of faces to display, and whether the stream is displayed.', 'sisfblike') ?></small>
-	    </p>
-	    <p>
-	    	<label for="<?php echo $this->get_field_id( 'colorscheme' ); ?>"><?php _e('Color Scheme', 'sisfblike') ?></label>
-	    	<select class="widefat" name="<?php echo $this->get_field_name( 'colorscheme' ); ?>">
-                <option value="light" <?php selected( $colorscheme, 'light' ); ?>>Light</option>
-                <option value="dark" <?php selected( $colorscheme, 'dark' ); ?>>Dark</option>
-            </select>
 	    </p>
 	    <p>
 	    	<input type="checkbox" class="widefat" id="<?php echo $this->get_field_id( 'showfaces' ); ?>" name="<?php echo $this->get_field_name( 'showfaces' ); ?>" value="1" <?php echo ( $showfaces == "true" ? "checked='checked'" : ""); ?> />
@@ -174,15 +156,15 @@ class SIS_FB_Like_Widget extends WP_Widget {
 	    </p>
 	    <p>
 	    	<input type="checkbox" class="widefat" id="<?php echo $this->get_field_id( 'stream' ); ?>" name="<?php echo $this->get_field_name( 'stream' ); ?>" value="1" <?php echo ( $stream == "true" ? "checked='checked'" : ""); ?> />
-	    	<label for="<?php echo $this->get_field_id( 'stream' ); ?>"><?php _e('Show Posts', 'sisfblike') ?></label>
+	    	<label for="<?php echo $this->get_field_id( 'stream' ); ?>"><?php _e('Show Page Posts', 'sisfblike') ?></label>
 	    </p>
 	    <p>
-	    	<input type="checkbox" class="widefat" id="<?php echo $this->get_field_id( 'header' ); ?>" name="<?php echo $this->get_field_name( 'header' ); ?>" value="1" <?php echo ($header == "true" ? "checked='checked'" : ""); ?> />
-	    	<label for="<?php echo $this->get_field_id( 'header' ); ?>"><?php _e('Show Header', 'sisfblike') ?></label>
+	    	<input type="checkbox" class="widefat" id="<?php echo $this->get_field_id( 'small_header' ); ?>" name="<?php echo $this->get_field_name( 'small_header' ); ?>" value="1" <?php echo ($small_header == "true" ? "checked='checked'" : ""); ?> />
+	    	<label for="<?php echo $this->get_field_id( 'small_header' ); ?>"><?php _e('Use Small Header', 'sisfblike') ?></label>
 	    </p>
 	    <p>
-	    	<input type="checkbox" class="widefat" id="<?php echo $this->get_field_id( 'showborder' ); ?>" name="<?php echo $this->get_field_name( 'showborder' ); ?>" value="1" <?php echo ($showborder == "true" ? "checked='checked'" : ""); ?> />
-	    	<label for="<?php echo $this->get_field_id( 'showborder' ); ?>"><?php _e('Show Border', 'sisfblike') ?></label>
+	    	<input type="checkbox" class="widefat" id="<?php echo $this->get_field_id( 'hide_cover' ); ?>" name="<?php echo $this->get_field_name( 'hide_cover' ); ?>" value="1" <?php echo ($hide_cover == "true" ? "checked='checked'" : ""); ?> />
+	    	<label for="<?php echo $this->get_field_id( 'hide_cover' ); ?>"><?php _e('Hide Cover Photo', 'sisfblike') ?></label>
 	    </p>
 	    <?php
 	}

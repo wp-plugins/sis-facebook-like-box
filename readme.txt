@@ -1,9 +1,9 @@
 === Facebook Like Box ===
 Contributors: sayful
 Tags: widget, facebook, facebook like box, facebook like, facebook like button, like button
-Requires at least: 3.0
+Requires at least: 3.4
 Tested up to: 4.3
-Stable tag: 2.0.0
+Stable tag: 2.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -31,15 +31,11 @@ The absolute URL of the Facebook Page that will be liked. This is a required set
 
 Width:
 
-The width of the plugin in pixels. Minimum is 292. Default is 300.
+The width of the plugin in pixels. Minimum is 150. Maximum is 500.
 
 Height:
 
-The height of the plugin in pixels. The default height varies based on number of (Friends' Faces) to display, and whether the (Posts) is displayed. With (Show Posts) set to true and 10 photos displayed (via Show Friends' Faces) the default height is 556px. With (Posts) and (Show Friends' Faces) both false, the default height is 63px. The (Posts) is always 300px so if you have it enabled, you need to make sure there is enough height for any other elements.
-
-Color Scheme:
-
-The color scheme used by the plugin. Can be "light" or "dark".Default is "light".
+The height of the plugin in pixels. The default height varies based on number of (Friends' Faces) to display, and whether the (Posts) is displayed. Minimum is 70.
 
 Show Friends' Faces:
 
@@ -49,13 +45,17 @@ Show Posts:
 
 Specifies whether to display a stream of the latest posts by the Page.
 
-Show Header:
+Hide Cover Photo:
 
-Specifies whether to display the Facebook header at the top of the plugin.
+Specifies whether to display or hide cover photo of the Page.
 
-Show Border:
+Use Small Header:
 
-Specifies whether or not to show a border around the plugin.
+Specifies whether to use small header (without share button) of the Page.
+
+Adapt to plugin container width:
+
+You do not need to do anything. From the version 2.1.0, the plugin will adapt your theme widget width.
 
 == Installation ==
 
@@ -76,13 +76,13 @@ Install by ZIP File
 
 Install by FTP
 
-* Find the directory titles 'sis-nicescroll' and upload it and all files within to the plugins directory of your WordPress install (WORDPRESS-DIRECTORY/wp-content/plugins/) [e.g. www.yourdomain.com/wp-content/plugins/]
+* Find the directory titles 'sis-facebook-like-box' and upload it and all files within to the plugins directory of your WordPress install (WORDPRESS-DIRECTORY/wp-content/plugins/) [e.g. www.yourdomain.com/wp-content/plugins/]
 * From your WordPress dashboard, choose 'Installed Plugins' option under the 'Plugins' category
 * Locate the newly added plugin and click on the 'Activate' link to enable its features.
 
 
 == Frequently Asked Questions ==
-Do you have questions or issues with SIS Facebook Like Box? [Ask for support here](http://wordpress.org/support/plugin/sis-facebook-like-box)
+Do you have questions or issues with Facebook Like Box? [Ask for support here](http://wordpress.org/support/plugin/sis-facebook-like-box)
 
 == Screenshots ==
 
@@ -90,6 +90,12 @@ Do you have questions or issues with SIS Facebook Like Box? [Ask for support her
 2. Screenshot of SIS Facebook Like Box Widget Front-end
 
 == Changelog ==
+
+= version 2.1.0 =
+* Upgraded - Upgrade to Facebook Page Plugin v2.4 API
+* Added - Hide Cover Photo, Use Small Header, Adapt to plugin container width
+* Deprecated - Color Scheme, Show Header, Show Border
+* (NB: Color Scheme, Show Header, Show Border are deprecated by Facebook Graph API v2.3)
 
 = version 2.0.0 =
 * Added option to change theme "Light" to "Dark"
@@ -103,11 +109,11 @@ Do you have questions or issues with SIS Facebook Like Box? [Ask for support her
 
 == CREDIT ==
 
-1. This plugin was developed by [Sayful Islam](http://sayful.net)
+1. This plugin was developed by [Sayful Islam](http://sayfulit.com)
 
 == CONTACT ==
 
-[Sayful Islam](http://www.sayful.net)
+[Sayful Islam](http://www.sayfulit.com)
 
 == Upgrade Notice ==
-You can upgrade this plugin for more options. But this version (2.0.0) will not work with your previour settings. After upgrading, you need to change some settings.
+You should upgrade this plugin for some new options.
